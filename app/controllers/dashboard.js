@@ -64,10 +64,12 @@ export default Ember.Controller.extend({
 		 	});
 		});
 
+		console.log('starting ajax request!');
 		this.set('loading', true);
 		this.get('ajax').request('series', {
 			method: 'GET'
 		}).then(function(response) {
+			console.log('returned a value!');
 			self.set('bigFilm', {
 				id: response.awesome[0].id,
 				name: response.awesome[0].name,
