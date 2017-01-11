@@ -1,244 +1,43 @@
-<br><br>
 <div class="row header-margin-top">
-	<div class="small-12 large-8 columns left-dashboard">
-		<span class="viewmore-left-dash"><span class="white-font view-all">View All</span></span>
-		<div class="ld-title1">
-			Top Rated Games
-		</div>
-		{{#if queryImplemented}}
-			<div class="ld-options">
-				<div class="ld-regions">
-					{{#power-select
-			      options=regions
-			      selected=region
-			      onchange=(action "selectedRegion")
-			      searchField='name'
-			      as |reg|
-			    }}
-			      {{reg.name}}
-			    {{/power-select}}
-				</div>
-				<div class="ld-regions">
-					{{#power-select
-			      options=years
-			      selected=currYear
-			      onchange=(action "selectedYear")
-			      as |yr|
-			    }}
-			      {{yr}}
-			    {{/power-select}}
-				</div>
-			</div>
-		{{/if}}
-		{{#if bigFilm}}
-			{{#unless bigFilm.loaded}}
-				<a class="gallerypic" title="" {{action 'bigFilmClick'}}>
-				  <img src={{youtube-thumbnail bigFilm.id}} style="width: 100%; height: inherit;" alt="[Gallery Photo]" class="pic" id="bigfilm-container"/>
-				  <span class="zoom-icon">
-				      <img src="/images/play_square.svg" width="85" height="85" alt="Zoom">
-				  </span>
-				</a>
-			{{else}}
-				<div class="big-film-container" style={{bigFilmStyle}}>
-					{{ember-youtube
-					playerVars=videoVars
-			    ytid=bigFilm.id
-			    volume=60
-			    startSeconds=5
-			    suggestedQuality='default'
-			 
-			    showControls=false
-			    showTime=false
-			    showProgress=false
-			    showDebug=false
-			 		
-			    width=bigFilmWidth
-			    height=bigFilmHeight
+	<div class="small-12 columns big-vid margin-top-3">
+		<div class="row">
+			<div class="small-12 medium-7 fright video-container">
+				{{#if bigFilm}}
+					{{#unless bigFilm.loaded}}
+						<a class="gallerypic" title="" {{action 'bigFilmClick'}}>
+						  <img src={{youtube-thumbnail bigFilm.id}} style="width: 100%; height: inherit;" alt="[Gallery Photo]" class="pic" id="bigfilm-container"/>
+						</a>
+					{{else}}
+						<div class="big-film-container" style={{bigFilmStyle}}>
+							{{ember-youtube
+							playerVars=videoVars
+					    ytid=bigFilm.id
+					    volume=60
+					    startSeconds=5
+					    suggestedQuality='default'
+					 
+					    showControls=false
+					    showTime=false
+					    showProgress=false
+					    showDebug=false
+					 		
+					    width=bigFilmWidth
+					    height=bigFilmHeight
 
-			    delegate=this
-			    delegate-as="emberYoutube"
-			 
-			    playing="ytPlaying"
-			    paused="ytPaused"
-			    ended="ytEnded"
-			    buffering="ytBuffering"}}
-			  </div>
-			{{/unless}}
-		{{else}}
-    		None Loaded... This shouldn't be happening :s
-		{{/if}}
-    <div class="bigfilm-name">{{bigFilm.name}}</div>
-    {{!--{{bottom-video large=true count=bigFilm.count name=bigFilm.name idKey=bigFilm.key awesome=true}}--}}
-    <div class="smaller-video-container">
-    	{{#if awesome}}
-	    	<div class="row">
-		    	{{#each awesome as |vid ind|}}
-		    		<div class="small-12 medium-4 columns small-video-area">
-		    			{{#unless vid.loaded}}
-								<a class="gallerypic" title="" {{action 'vidClick' 'awesome' ind}}>
-								  <img src={{youtube-thumbnail vid.id}} style="width: 100%;" alt="[Gallery Photo]" class="pic" id="awesome-container"/>
-								  <span class="zoom-icon small">
-								      <img src="/images/play_square.svg" width="85" height="85" alt="Zoom">
-								  </span>
-								</a>
-							{{else}}
-								<div class="small-vid-container" style={{normalFilmStyle}}>
-									{{ember-youtube
-							    ytid=vid.id
-									playerVars=videoVars
-							    startSeconds=5
-							    suggestedQuality='default'
-							    volume=100
-							 
-							    showControls=false
-							    showTime=false
-							    showProgress=false
-							    showDebug=false
-							 		
-							    width=awesomeSAndClowWidth
-							    height=awesomeSAndClowHeight
-
-							    delegate=this
-							    delegate-as="emberYoutube"}}
-							  </div>
-							{{/unless}}
-					    <span class="small-size">{{vid.name}}</span>
-	    				{{!--{{bottom-video small=true count=vid.awesomeN name=vid.name idKey=vid.key}}--}}
-	    			</div>
-		    	{{/each}}
+					    delegate=this
+					    delegate-as="emberYoutube"
+					 
+					    playing="ytPlaying"
+					    paused="ytPaused"
+					    ended="ytEnded"
+					    buffering="ytBuffering"}}
+					  </div>
+					{{/unless}}
+				{{/if}}
 			</div>
-	    	<div class="load-more-button">
-	    		<a class="large button" {{action 'loadmore' 'awesome'}}>Load More</a>
-	    	</div>
-    	{{else}}
-    		None Loaded... This shouldn't be happening :s
-    	{{/if}}
-    </div>
-    <div class="spacer-container">
-	    <div class="or-spacer">
-			  <div class="mask"></div>
-			  <span><i>or</i></span>
+			<div class="small-12 medium-4 fleft video-text">
+    			<div class="bigfilm-name">{{bigFilm.name}}</div>
 			</div>
-    </div>
-		<div class="ld-title1">
-			Fun Games
-		</div>
-		<div class="smaller-video-container">
-			{{#if fiesta}}
-				<div class="row">
-			    	{{#each fiesta as |vid ind|}}
-			    		<div class="small-12 medium-4 columns small-video-area">
-			    			{{#unless vid.loaded}}
-									<a class="gallerypic" title="" {{action 'vidClick' 'fiesta' ind}}>
-									  <img src={{youtube-thumbnail vid.id}} style="width: 100%;" alt="[Gallery Photo]" class="pic" />
-									  <span class="zoom-icon small">
-									      <img src="/images/play_square.svg" width="85" height="85" alt="Zoom">
-									  </span>
-									</a>
-								{{else}}
-									<div class="small-vid-container" style={{normalFilmStyle}}>
-										{{ember-youtube
-									    ytid=vid.id
-											playerVars=videoVars
-									    startSeconds=5
-									    suggestedQuality='default'
-									    volume=100
-									 
-									    showControls=false
-									    showTime=false
-									    showProgress=false
-									    showDebug=false
-									 		
-									    width=awesomeSAndClowWidth
-									    height=awesomeSAndClowHeight
-
-									    delegate=this
-									    delegate-as="emberYoutube"}}
-									 </div>
-								{{/unless}}
-						    <span class="small-size">{{vid.name}}</span>
-		    				{{!--{{bottom-video small=true count=vid.funstompN idKey=vid.key fun=true}}--}}
-						  </div>
-			    	{{/each}}
-			    </div>
-		    	<div class="load-more-button">
-		    		<a class="large button" {{action 'loadmore' 'fiesta'}}>Load More</a>
-		    	</div>
-			{{else}}
-    			None Loaded... This shouldn't be happening :s
-			{{/if}}
-		</div>
-	</div>
-	<div class="small-12 large-4 columns right-dashboard">
-		<br>
-		<div class="ld-title1">
-			Most Recent Games
-		</div>
-		{{#if queryImplemented}}
-			<div class="rd-options">
-				{{#power-select
-		      options=regionsR
-		      selected=regionR
-		      onchange=(action "selectedRegion")
-		      searchField='name'
-		      as |reg|
-		    }}
-		      {{reg.name}}
-		    {{/power-select}}
-				{{#power-select
-		      options=yearsR
-		      selected=currYearR
-		      onchange=(action "selectedYear")
-		      as |yr|
-		    }}
-		      {{yr}}
-		    {{/power-select}}
-			</div>
-		{{/if}}
-		<div class="recent-videos-container">
-			{{#if newest}}
-				<div class="row">
-					{{#each newest as |vid ind|}}
-						<div class="small-12 medium-4 large-12 columns small-video-area medium">
-							{{#unless vid.loaded}}
-								<a class="gallerypic" title="" {{action 'vidClick' 'newest' ind}}>
-								  <img src={{youtube-thumbnail vid.id}} style="width: 100%;" alt="[Gallery Photo]" class="pic" id="recent-container"/>
-								  <span class="zoom-icon medium">
-								      <img src="/images/play_square.svg" width="85" height="85" alt="Zoom">
-								  </span>
-								</a>
-							{{else}}
-								<div class="medium-vid-container" style={{mediumFilmStyle}}>
-									{{ember-youtube
-								    ytid=vid.id
-										playerVars=videoVars
-								    startSeconds=5
-								    suggestedQuality='default'
-								    volume=100
-								 
-								    showControls=false
-								    showTime=false
-								    showProgress=false
-								    showDebug=false
-								 		
-								    width=mostRecentWidth
-								    height=mostRecentHeight
-
-								    delegate=this
-								    delegate-as="emberYoutube"}}
-								</div>
-							{{/unless}}
-					    <span class="small-size">{{vid.name}}</span>
-							{{!--{{bottom-video medium=true count=vid.awesomeN idKey=vid.key name=vid.name}}--}}
-				  	</div>
-					{{/each}}
-				</div>
-		    	<div class="load-more-button">
-		    		<a class="large button" {{action 'loadmore' 'newest'}}>Load More</a>
-		    	</div>
-			{{else}}
-    			None Loaded... This shouldn't be happening :s
-			{{/if}}
 		</div>
 	</div>
 </div>
