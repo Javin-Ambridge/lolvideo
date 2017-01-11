@@ -1,5 +1,6 @@
 {
   "name": "lolvideo-frontend",
   "dependencies": {
+    "foundation": "~5.5.0"
   }
 }
