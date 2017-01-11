@@ -2,36 +2,38 @@
 	<div class="small-12 columns big-vid margin-top-3">
 		<div class="row">
 			<div class="small-12 medium-7 fright video-container">
-				{{#unless bigFilm.loaded}}
-					<a class="gallerypic" title="" {{action 'bigFilmClick'}}>
-					  <img src={{youtube-thumbnail bigFilm.id}} style="width: 100%; height: inherit;" alt="[Gallery Photo]" class="pic" id="bigfilm-container"/>
-					</a>
-				{{else}}
-					<div class="big-film-container" style={{bigFilmStyle}}>
-						{{ember-youtube
-						playerVars=videoVars
-				    ytid=bigFilm.id
-				    volume=60
-				    startSeconds=5
-				    suggestedQuality='default'
-				 
-				    showControls=false
-				    showTime=false
-				    showProgress=false
-				    showDebug=false
-				 		
-				    width=bigFilmWidth
-				    height=bigFilmHeight
+				{{#if bigFilm}}
+					{{#unless bigFilm.loaded}}
+						<a class="gallerypic" title="" {{action 'bigFilmClick'}}>
+						  <img src={{youtube-thumbnail bigFilm.id}} style="width: 100%; height: inherit;" alt="[Gallery Photo]" class="pic" id="bigfilm-container"/>
+						</a>
+					{{else}}
+						<div class="big-film-container" style={{bigFilmStyle}}>
+							{{ember-youtube
+							playerVars=videoVars
+					    ytid=bigFilm.id
+					    volume=60
+					    startSeconds=5
+					    suggestedQuality='default'
+					 
+					    showControls=false
+					    showTime=false
+					    showProgress=false
+					    showDebug=false
+					 		
+					    width=bigFilmWidth
+					    height=bigFilmHeight
 
-				    delegate=this
-				    delegate-as="emberYoutube"
-				 
-				    playing="ytPlaying"
-				    paused="ytPaused"
-				    ended="ytEnded"
-				    buffering="ytBuffering"}}
-				  </div>
-				{{/unless}}
+					    delegate=this
+					    delegate-as="emberYoutube"
+					 
+					    playing="ytPlaying"
+					    paused="ytPaused"
+					    ended="ytEnded"
+					    buffering="ytBuffering"}}
+					  </div>
+					{{/unless}}
+				{{/if}}
 			</div>
 			<div class="small-12 medium-4 fleft video-text">
     			<div class="bigfilm-name">{{bigFilm.name}}</div>
