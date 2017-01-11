@@ -1,0 +1,29 @@
+<div class="count-container {{if small 'reduced'}}">
+  {{count}}
+  {{#unless (logic-or small medium)}}
+    {{tooltip-on-element text='Total Votes'}}
+  {{/unless}}
+  {{#if fun}}
+    {{tooltip-on-element text='Fun Votes'}}
+  {{/if}}
+</div>
+<div class="rate-container {{if (logic-or small medium) 'no-border'}} {{if medium 'medium'}}">
+  <a {{action 'rate' 'awesome'}} class="awesome {{if awesomeOption 'active'}}">
+    {{fa-icon 'fa-thumbs-o-up'}}
+    {{#if awesome}}
+      {{tooltip-on-element text='Awesome Vote'}}
+    {{/if}}
+  </a>
+  <a {{action 'rate' 'boring'}} class="boring {{if badOption 'active'}}">
+    {{fa-icon 'fa-thumbs-o-down'}}
+    {{#if awesome}}
+      {{tooltip-on-element text='Bad Vote'}}
+    {{/if}}
+  </a>
+  <a {{action 'rate' 'fun'}} class="fiesta {{if funOption 'active'}}">
+    {{fa-icon 'fa-smile-o'}}
+    {{#if awesome}}
+      {{tooltip-on-element text='Fun Vote'}}
+    {{/if}}
+  </a>
+</div>

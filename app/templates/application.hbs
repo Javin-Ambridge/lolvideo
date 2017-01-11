@@ -1,6 +1,10 @@
 <div class="container {{if color 'old-colors'}}">
-	<div class="header center">
-		ProLeagueVideos
+	<div class="header">
+		<a {{action 'swapColors'}} class="white-font">
+			<span class="inline-b fleft margin-left-2 margin-top-1 switch-size">{{fa-icon swapIcon}}</span>
+		</a>
+		<span class="header-right log-in"><span class="white-font">Log In</span></span>
+		<span class="header-right">Sign Up</span>
 	</div>
 	{{outlet}}
 </div>
