@@ -169,6 +169,7 @@ export default Ember.Controller.extend({
 			});
 		},
 		bigFilmClick () {
+			this.resize();
 			this.set('bigFilm.loaded', true);
 			this.get('emberYoutube').seekTo(0);
 		},
