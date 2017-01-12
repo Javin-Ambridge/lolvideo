@@ -86,10 +86,18 @@ export default Ember.Controller.extend({
 			for(var k = 0; k < response.newest.length; k++) {
 				response.newest[k].loaded = false;
 			}
+
+			response.newest.sort(function(a, b) {
+				return new Date(b.created_at) - new Date(a.created_at)
+			});
 			self.set('awesome', response.awesome);
 			self.set('fiesta', response.funstomp);
 			self.set('newest', response.newest);
 			self.set('loading', false);
+
+			Ember.run.later((function() {
+				self.resize();
+			}), 1000);
 		});
 	}),
 	resize: function() {
@@ -133,6 +141,31 @@ export default Ember.Controller.extend({
 	}),
 	mediumFilmStyle: Ember.computed('mostRecentWidth', 'mostRecentHeight', function() {
 		return Ember.String.htmlSafe('width: ' + (this.get('mostRecentWidth') + 10) + 'px; height: ' + (this.get('mostRecentHeight') + 10) + 'px;');
+	}),
+	zoomIconBig: Ember.computed('bigFilmWidth', 'bigFilmHeight', function() {
+		var width = this.get('bigFilmWidth');
+		var height = this.get('bigFilmHeight');
+		return this.centerer(width, height, 85, 85);
+	}),
+	zoomIconSmall: Ember.computed('awesomeSAndClowHeight', 'awesomeSAndClowWidth', function() {
+		return this.centerer(this.get('awesomeSAndClowWidth'), this.get('awesomeSAndClowHeight'), 85, 85);
+	}),
+	zoomIconMed: Ember.computed('mostRecentHeight', 'mostRecentWidth', function() {
+		return this.centerer(this.get('mostRecentWidth'), this.get('mostRecentHeight'), 85, 85);
+	}),
+	centerer: function(w, h, sizeW, sizeH) {
+		var topP = (h / 2) - (sizeH / 2);
+		var leftP = (w / 2) - (sizeW / 2);
+		if (!topP || !leftP || topP < 0 || leftP < 0) {
+			return Ember.String.htmlSafe('');
+		}
+		return Ember.String.htmlSafe('top: ' + topP + 'px; left: ' + leftP + 'px;');
+	},
+	containerSizeSmall: Ember.computed('awesomeSAndClowHeight', function() {
+		return Ember.String.htmlSafe('height: ' + (this.get('awesomeSAndClowHeight') + 100) + 'px;');
+	}),
+	containerSizeMed: Ember.computed('mostRecentHeight', function() {
+		return Ember.String.htmlSafe('height: ' + (this.get('mostRecentHeight') + 100) + 'px;');
 	}),
 
 	actions: {

@@ -32,7 +32,7 @@
 			{{#unless bigFilm.loaded}}
 				<a class="gallerypic" title="" {{action 'bigFilmClick'}}>
 				  <img src={{youtube-thumbnail bigFilm.id}} style="width: 100%; height: inherit; max-height: 550px;" alt="[Gallery Photo]" class="pic" id="bigfilm-container"/>
-				  <span class="zoom-icon">
+				  <span class="zoom-icon" style={{zoomIconBig}}>
 				      <img src="/images/play_square.svg" width="85" height="85" alt="Zoom">
 				  </span>
 				</a>
@@ -80,11 +80,11 @@
 	    	{{#if awesome}}
 		    	<div class="row">
 			    	{{#each awesome as |vid ind|}}
-			    		<div class="small-12 medium-4 columns small-video-area">
+			    		<div class="small-12 medium-4 columns small-video-area" style={{containerSizeSmall}}>
 			    			{{#unless vid.loaded}}
 									<a class="gallerypic" title="" {{action 'vidClick' 'awesome' ind}}>
 									  <img src={{youtube-thumbnail vid.id}} style="width: 100%;" alt="[Gallery Photo]" class="pic" id="awesome-container"/>
-									  <span class="zoom-icon small">
+									  <span class="zoom-icon small" style={{zoomIconSmall}}>
 									      <img src="/images/play_square.svg" width="85" height="85" alt="Zoom">
 									  </span>
 									</a>
@@ -133,11 +133,11 @@
 			<div class="smaller-video-container">
 				<div class="row">
 			    	{{#each fiesta as |vid ind|}}
-			    		<div class="small-12 medium-4 columns small-video-area">
+			    		<div class="small-12 medium-4 columns small-video-area" style={{containerSizeSmall}}>
 			    			{{#unless vid.loaded}}
 									<a class="gallerypic" title="" {{action 'vidClick' 'fiesta' ind}}>
 									  <img src={{youtube-thumbnail vid.id}} style="width: 100%;" alt="[Gallery Photo]" class="pic" />
-									  <span class="zoom-icon small">
+									  <span class="zoom-icon small" style={{zoomIconSmall}}>
 									      <img src="/images/play_square.svg" width="85" height="85" alt="Zoom">
 									  </span>
 									</a>
@@ -187,9 +187,6 @@
 	</div>
 	<div class="small-12 columns right-dashboard margin-bottom-2">
 		<br>
-		<div class="ld-title1">
-			Most Recent Games
-		</div>
 		{{#if queryImplemented}}
 			<div class="rd-options">
 				{{#power-select
@@ -211,15 +208,18 @@
 		    {{/power-select}}
 			</div>
 		{{/if}}
-		<div class="recent-videos-container">
-			{{#if newest}}
+		{{#if newest}}
+			<div class="ld-title1">
+				Most Recent Games
+			</div>
+			<div class="recent-videos-container">
 				<div class="row">
 					{{#each newest as |vid ind|}}
-						<div class="small-12 medium-4 columns small-video-area medium">
+						<div class="small-12 medium-4 columns small-video-area medium" style={{containerSizeMed}}>
 							{{#unless vid.loaded}}
 								<a class="gallerypic" title="" {{action 'vidClick' 'newest' ind}}>
 								  <img src={{youtube-thumbnail vid.id}} style="width: 100%;" alt="[Gallery Photo]" class="pic" id="recent-container"/>
-								  <span class="zoom-icon medium">
+								  <span class="zoom-icon medium" style={{zoomIconMed}}>
 								      <img src="/images/play_square.svg" width="85" height="85" alt="Zoom">
 								  </span>
 								</a>
@@ -253,7 +253,8 @@
 		    		<a class="large button" {{action 'loadmore' 'newest'}}>Load More</a>
 		    		<a class="large button view-all">View All</a>
 		    	</div>
-			{{else}}
+			</div>
+		{{else}}
 			<div class="loader-top3" id="fountainG">
 				<div id="fountainG_1" class="fountainG"></div>
 				<div id="fountainG_2" class="fountainG"></div>
@@ -264,7 +265,6 @@
 				<div id="fountainG_7" class="fountainG"></div>
 				<div id="fountainG_8" class="fountainG"></div>
 			</div>
-			{{/if}}
-		</div>
+		{{/if}}
 	</div>
 </div>
