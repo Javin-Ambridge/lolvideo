@@ -1,7 +1,5 @@
-<br><br>
 <div class="row header-margin-top">
-	<div class="small-12 large-8 columns left-dashboard">
-		<span class="viewmore-left-dash"><span class="white-font view-all">View All</span></span>
+	<div class="small-12 large-12 columns left-dashboard">
 		<div class="ld-title1">
 			Top Rated Games
 		</div>
@@ -33,7 +31,7 @@
 		{{#if bigFilm}}
 			{{#unless bigFilm.loaded}}
 				<a class="gallerypic" title="" {{action 'bigFilmClick'}}>
-				  <img src={{youtube-thumbnail bigFilm.id}} style="width: 100%; height: inherit;" alt="[Gallery Photo]" class="pic" id="bigfilm-container"/>
+				  <img src={{youtube-thumbnail bigFilm.id}} style="width: 100%; height: inherit; max-height: 550px;" alt="[Gallery Photo]" class="pic" id="bigfilm-container"/>
 				  <span class="zoom-icon">
 				      <img src="/images/play_square.svg" width="85" height="85" alt="Zoom">
 				  </span>
@@ -67,59 +65,60 @@
 		{{else}}
     		None Loaded... This shouldn't be happening :s
 		{{/if}}
-    <div class="bigfilm-name">{{bigFilm.name}}</div>
-    {{bottom-video large=true count=bigFilm.count name=bigFilm.name idKey=bigFilm.key awesome=true}}
-    <div class="smaller-video-container">
-    	{{#if awesome}}
-	    	<div class="row">
-		    	{{#each awesome as |vid ind|}}
-		    		<div class="small-12 medium-4 columns small-video-area">
-		    			{{#unless vid.loaded}}
-								<a class="gallerypic" title="" {{action 'vidClick' 'awesome' ind}}>
-								  <img src={{youtube-thumbnail vid.id}} style="width: 100%;" alt="[Gallery Photo]" class="pic" id="awesome-container"/>
-								  <span class="zoom-icon small">
-								      <img src="/images/play_square.svg" width="85" height="85" alt="Zoom">
-								  </span>
-								</a>
-							{{else}}
-								<div class="small-vid-container" style={{normalFilmStyle}}>
-									{{ember-youtube
-							    ytid=vid.id
-									playerVars=videoVars
-							    startSeconds=5
-							    suggestedQuality='default'
-							    volume=100
-							 
-							    showControls=false
-							    showTime=false
-							    showProgress=false
-							    showDebug=false
-							 		
-							    width=awesomeSAndClowWidth
-							    height=awesomeSAndClowHeight
+    	<div class="bigfilm-name">{{bigFilm.name}}</div>
+    	{{bottom-video large=true count=bigFilm.count name=bigFilm.name idKey=bigFilm.key awesome=true}}
+    	<div class="smaller-video-container">
+	    	{{#if awesome}}
+		    	<div class="row">
+			    	{{#each awesome as |vid ind|}}
+			    		<div class="small-12 medium-4 columns small-video-area">
+			    			{{#unless vid.loaded}}
+									<a class="gallerypic" title="" {{action 'vidClick' 'awesome' ind}}>
+									  <img src={{youtube-thumbnail vid.id}} style="width: 100%;" alt="[Gallery Photo]" class="pic" id="awesome-container"/>
+									  <span class="zoom-icon small">
+									      <img src="/images/play_square.svg" width="85" height="85" alt="Zoom">
+									  </span>
+									</a>
+								{{else}}
+									<div class="small-vid-container" style={{normalFilmStyle}}>
+										{{ember-youtube
+								    ytid=vid.id
+										playerVars=videoVars
+								    startSeconds=5
+								    suggestedQuality='default'
+								    volume=100
+								 
+								    showControls=false
+								    showTime=false
+								    showProgress=false
+								    showDebug=false
+								 		
+								    width=awesomeSAndClowWidth
+								    height=awesomeSAndClowHeight
 
-							    delegate=this
-							    delegate-as="emberYoutube"}}
-							  </div>
-							{{/unless}}
-					    <span class="small-size">{{vid.name}}</span>
-	    				{{bottom-video small=true count=vid.awesomeN name=vid.name idKey=vid.key}}
-	    			</div>
-		    	{{/each}}
-			</div>
-	    	<div class="load-more-button">
-	    		<a class="large button" {{action 'loadmore' 'awesome'}}>Load More</a>
-	    	</div>
-    	{{else}}
-    		None Loaded... This shouldn't be happening :s
-    	{{/if}}
-    </div>
-    <div class="spacer-container">
-	    <div class="or-spacer">
-			  <div class="mask"></div>
-			  <span><i>or</i></span>
-			</div>
-    </div>
+								    delegate=this
+								    delegate-as="emberYoutube"}}
+								  </div>
+								{{/unless}}
+						    <span class="small-size">{{vid.name}}</span>
+		    				{{bottom-video small=true count=vid.awesomeN name=vid.name idKey=vid.key}}
+		    			</div>
+			    	{{/each}}
+				</div>
+		    	<div class="load-more-button">
+		    		<a class="large button" {{action 'loadmore' 'awesome'}}>Load More</a>
+		    		<a class="large button view-all">View All</a>
+		    	</div>
+	    	{{else}}
+	    		None Loaded... This shouldn't be happening :s
+	    	{{/if}}
+	    </div>
+	    <div class="spacer-container margin-top-1 margin-bottom-3">
+		    <div class="or-spacer">
+				  <div class="mask"></div>
+				  <span><i>or</i></span>
+				</div>
+	    </div>
 		<div class="ld-title1">
 			Fun Games
 		</div>
@@ -163,13 +162,14 @@
 			    </div>
 		    	<div class="load-more-button">
 		    		<a class="large button" {{action 'loadmore' 'fiesta'}}>Load More</a>
+		    		<a class="large button view-all">View All</a>
 		    	</div>
 			{{else}}
     			None Loaded... This shouldn't be happening :s
 			{{/if}}
 		</div>
 	</div>
-	<div class="small-12 large-4 columns right-dashboard">
+	<div class="small-12 columns right-dashboard margin-bottom-2">
 		<br>
 		<div class="ld-title1">
 			Most Recent Games
@@ -199,7 +199,7 @@
 			{{#if newest}}
 				<div class="row">
 					{{#each newest as |vid ind|}}
-						<div class="small-12 medium-4 large-12 columns small-video-area medium">
+						<div class="small-12 medium-4 columns small-video-area medium">
 							{{#unless vid.loaded}}
 								<a class="gallerypic" title="" {{action 'vidClick' 'newest' ind}}>
 								  <img src={{youtube-thumbnail vid.id}} style="width: 100%;" alt="[Gallery Photo]" class="pic" id="recent-container"/>
@@ -235,6 +235,7 @@
 				</div>
 		    	<div class="load-more-button">
 		    		<a class="large button" {{action 'loadmore' 'newest'}}>Load More</a>
+		    		<a class="large button view-all">View All</a>
 		    	</div>
 			{{else}}
     			None Loaded... This shouldn't be happening :s
