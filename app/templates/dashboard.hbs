@@ -1,8 +1,5 @@
 <div class="row header-margin-top">
 	<div class="small-12 large-12 columns left-dashboard">
-		<div class="ld-title1">
-			Top Rated Games
-		</div>
 		{{#if queryImplemented}}
 			<div class="ld-options">
 				<div class="ld-regions">
@@ -29,6 +26,9 @@
 			</div>
 		{{/if}}
 		{{#if bigFilm}}
+			<div class="ld-title1">
+				Top Rated Games
+			</div>
 			{{#unless bigFilm.loaded}}
 				<a class="gallerypic" title="" {{action 'bigFilmClick'}}>
 				  <img src={{youtube-thumbnail bigFilm.id}} style="width: 100%; height: inherit; max-height: 550px;" alt="[Gallery Photo]" class="pic" id="bigfilm-container"/>
@@ -62,11 +62,20 @@
 			    buffering="ytBuffering"}}
 			  </div>
 			{{/unless}}
+	    	<div class="bigfilm-name">{{bigFilm.name}}</div>
+	    	{{bottom-video large=true count=bigFilm.count name=bigFilm.name idKey=bigFilm.key awesome=true}}
 		{{else}}
-    		None Loaded... This shouldn't be happening :s
+			<div class="loader-top" id="fountainG">
+				<div id="fountainG_1" class="fountainG"></div>
+				<div id="fountainG_2" class="fountainG"></div>
+				<div id="fountainG_3" class="fountainG"></div>
+				<div id="fountainG_4" class="fountainG"></div>
+				<div id="fountainG_5" class="fountainG"></div>
+				<div id="fountainG_6" class="fountainG"></div>
+				<div id="fountainG_7" class="fountainG"></div>
+				<div id="fountainG_8" class="fountainG"></div>
+			</div>
 		{{/if}}
-    	<div class="bigfilm-name">{{bigFilm.name}}</div>
-    	{{bottom-video large=true count=bigFilm.count name=bigFilm.name idKey=bigFilm.key awesome=true}}
     	<div class="smaller-video-container">
 	    	{{#if awesome}}
 		    	<div class="row">
@@ -109,8 +118,6 @@
 		    		<a class="large button" {{action 'loadmore' 'awesome'}}>Load More</a>
 		    		<a class="large button view-all">View All</a>
 		    	</div>
-	    	{{else}}
-	    		None Loaded... This shouldn't be happening :s
 	    	{{/if}}
 	    </div>
 	    <div class="spacer-container margin-top-1 margin-bottom-3">
@@ -119,11 +126,11 @@
 				  <span><i>or</i></span>
 				</div>
 	    </div>
-		<div class="ld-title1">
-			Fun Games
-		</div>
-		<div class="smaller-video-container">
-			{{#if fiesta}}
+		{{#if fiesta}}
+			<div class="ld-title1">
+				Fun Games
+			</div>
+			<div class="smaller-video-container">
 				<div class="row">
 			    	{{#each fiesta as |vid ind|}}
 			    		<div class="small-12 medium-4 columns small-video-area">
@@ -164,10 +171,19 @@
 		    		<a class="large button" {{action 'loadmore' 'fiesta'}}>Load More</a>
 		    		<a class="large button view-all">View All</a>
 		    	</div>
-			{{else}}
-    			None Loaded... This shouldn't be happening :s
-			{{/if}}
-		</div>
+			</div>
+		{{else}}
+			<div class="loader-top2" id="fountainG">
+				<div id="fountainG_1" class="fountainG"></div>
+				<div id="fountainG_2" class="fountainG"></div>
+				<div id="fountainG_3" class="fountainG"></div>
+				<div id="fountainG_4" class="fountainG"></div>
+				<div id="fountainG_5" class="fountainG"></div>
+				<div id="fountainG_6" class="fountainG"></div>
+				<div id="fountainG_7" class="fountainG"></div>
+				<div id="fountainG_8" class="fountainG"></div>
+			</div>
+		{{/if}}
 	</div>
 	<div class="small-12 columns right-dashboard margin-bottom-2">
 		<br>
@@ -238,7 +254,16 @@
 		    		<a class="large button view-all">View All</a>
 		    	</div>
 			{{else}}
-    			None Loaded... This shouldn't be happening :s
+			<div class="loader-top3" id="fountainG">
+				<div id="fountainG_1" class="fountainG"></div>
+				<div id="fountainG_2" class="fountainG"></div>
+				<div id="fountainG_3" class="fountainG"></div>
+				<div id="fountainG_4" class="fountainG"></div>
+				<div id="fountainG_5" class="fountainG"></div>
+				<div id="fountainG_6" class="fountainG"></div>
+				<div id="fountainG_7" class="fountainG"></div>
+				<div id="fountainG_8" class="fountainG"></div>
+			</div>
 			{{/if}}
 		</div>
 	</div>
