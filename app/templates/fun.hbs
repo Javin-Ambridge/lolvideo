@@ -1,0 +1,61 @@
+<div class="row left-dashboard header-margin-top">
+	<div class="small-12 columns">
+	    <div class="smaller-video-container">
+			<div class="ld-title1 margin-bottom-1 margin-top-1">
+				Most Enjoyable Games
+			</div>
+	    	{{#if fun}}
+		    	<div class="row">
+			    	{{#each fun as |vid ind|}}
+			    		<div class="small-12 medium-4 columns small-video-area" style={{containerSize}}>
+			    			{{#unless vid.loaded}}
+									<a class="gallerypic" title="" {{action 'vidClick' 'fun' ind}}>
+									  <img src={{youtube-thumbnail vid.id}} style="width: 100%;" alt="[Gallery Photo]" class="pic" id="awesome-container"/>
+									  <span class="zoom-icon small" style={{zoomIconSmall}}>
+									      <img src="/images/play_square.svg" width="85" height="85" alt="Zoom">
+									  </span>
+									</a>
+								{{else}}
+									<div class="small-vid-container" style={{normalFilmStyle}}>
+										{{ember-youtube
+									    ytid=vid.id
+											playerVars=videoVars
+									    startSeconds=5
+									    suggestedQuality='default'
+									    volume=100
+									 
+									    showControls=false
+									    showTime=false
+									    showProgress=false
+									    showDebug=false
+									 		
+									    width=awesomeSAndClowWidth
+									    height=awesomeSAndClowHeight
+
+									    delegate=this
+									    delegate-as="emberYoutube"}}
+								  </div>
+								{{/unless}}
+						    <span class="small-size">{{vid.name}}</span>
+		    				{{bottom-video small=true count=vid.funstompN name=vid.name idKey=vid.key awesome=true}}
+		    			</div>
+			    	{{/each}}
+				</div>
+		    	<div class="load-more-button">
+		    		<a class="large button" {{action 'loadmore'}}>Load More</a>
+		    	</div>
+	    	{{else}}
+				<div class="loader-top2" id="fountainG">
+					<div id="fountainG_1" class="fountainG"></div>
+					<div id="fountainG_2" class="fountainG"></div>
+					<div id="fountainG_3" class="fountainG"></div>
+					<div id="fountainG_4" class="fountainG"></div>
+					<div id="fountainG_5" class="fountainG"></div>
+					<div id="fountainG_6" class="fountainG"></div>
+					<div id="fountainG_7" class="fountainG"></div>
+					<div id="fountainG_8" class="fountainG"></div>
+				</div>
+	    	{{/if}}
+	    </div>
+	</div>
+</div>

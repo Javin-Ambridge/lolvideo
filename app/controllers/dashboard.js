@@ -124,14 +124,14 @@ export default Ember.Controller.extend({
 		}
 	},
 	updateWidths: function() {
-		this.set('mostRecentWidth', $('#recent-container').outerWidth(true));
-		this.set('bigFilmWidth', $('#bigfilm-container').outerWidth(true));
-		this.set('awesomeSAndClowWidth', $('#awesome-container').outerWidth(true));
+		this.set('mostRecentWidth', Ember.$('#recent-container').outerWidth(true));
+		this.set('bigFilmWidth', Ember.$('#bigfilm-container').outerWidth(true));
+		this.set('awesomeSAndClowWidth', Ember.$('#awesome-container').outerWidth(true));
 	},
 	updateHeights: function() {
-		this.set('mostRecentHeight', $('#recent-container').outerHeight(true));
-		this.set('bigFilmHeight', $('#bigfilm-container').outerHeight(true));
-		this.set('awesomeSAndClowHeight', $('#awesome-container').outerHeight(true));
+		this.set('mostRecentHeight', Ember.$('#recent-container').outerHeight(true));
+		this.set('bigFilmHeight', Ember.$('#bigfilm-container').outerHeight(true));
+		this.set('awesomeSAndClowHeight', Ember.$('#awesome-container').outerHeight(true));
 	},
 	bigFilmStyle: Ember.computed('bigFilmWidth', 'bigFilmHeight', function() {
 		return Ember.String.htmlSafe('width: ' + (this.get('bigFilmWidth') + 10) + 'px; height: ' + (this.get('bigFilmHeight') + 10) + 'px;');

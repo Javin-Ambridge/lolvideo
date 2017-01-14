@@ -3,7 +3,26 @@
 		<a {{action 'swapColors'}} class="show-for-medium-up white-font">
 			<span class="inline-b fleft margin-left-2 margin-top-1 switch-size">{{fa-icon swapIcon}}</span>
 		</a>
-		{{#link-to 'dashboard'}}<span class="header-text">ProLeagueVideos</span>{{/link-to}}
+		{{#if specificPage}}
+			{{#if newest}}
+				<a><span class="header-spc-text text active">New</span></a>
+			{{else}}
+				{{#link-to 'newest'}}<span class="header-spc-text text">New</span>{{/link-to}}
+			{{/if}}
+			{{#if fun}}
+				<a><span class="header-spc-text text active">Fun</span></a>
+			{{else}}
+				{{#link-to 'fun'}}<span class="header-spc-text text">Fun</span>{{/link-to}}
+			{{/if}}
+			{{#if awesome}} 
+				<a><span class="header-spc-text text active">Awesome</span></a>
+			{{else}}
+				{{#link-to 'awesome'}}<span class="header-spc-text text">Awesome</span>{{/link-to}}
+			{{/if}}
+			{{#link-to 'dashboard'}}<span class="header-spc-text">{{fa-icon "fa-home"}}</span>{{/link-to}}
+		{{else}}
+			{{#link-to 'dashboard'}}<span class="header-text">ProLeagueVideos</span>{{/link-to}}
+		{{/if}}
 	</div>
 	{{outlet}}
 </div>

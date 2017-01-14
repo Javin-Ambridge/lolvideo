@@ -116,7 +116,7 @@
 				</div>
 		    	<div class="load-more-button">
 		    		<a class="large button" {{action 'loadmore' 'awesome'}}>Load More</a>
-		    		<a class="large button view-all">View All</a>
+		    		{{#link-to 'awesome' class="large button view-all"}}View All{{/link-to}}
 		    	</div>
 	    	{{/if}}
 	    </div>
@@ -169,7 +169,7 @@
 			    </div>
 		    	<div class="load-more-button">
 		    		<a class="large button" {{action 'loadmore' 'fiesta'}}>Load More</a>
-		    		<a class="large button view-all">View All</a>
+		    		{{#link-to 'fun' class="large button view-all"}}View All{{/link-to}}
 		    	</div>
 			</div>
 		{{else}}
@@ -251,7 +251,7 @@
 				</div>
 		    	<div class="load-more-button">
 		    		<a class="large button" {{action 'loadmore' 'newest'}}>Load More</a>
-		    		<a class="large button view-all">View All</a>
+		    		{{#link-to 'newest' class="large button view-all"}}View All{{/link-to}}
 		    	</div>
 			</div>
 		{{else}}
