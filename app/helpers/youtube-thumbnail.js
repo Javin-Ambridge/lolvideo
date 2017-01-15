@@ -2,7 +2,7 @@ import Ember from 'ember';
 var youtubeThumbnailConv, converter;
 
 converter = function(params) {
-	return 'http://img.youtube.com/vi/' + params[0] + '/hqdefault.jpg';
+	return 'https://img.youtube.com/vi/' + params[0] + '/hqdefault.jpg';
 };
 
 youtubeThumbnailConv = Ember.Helper.helper(converter);
