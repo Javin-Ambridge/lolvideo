@@ -50,6 +50,7 @@ export default Ember.Controller.extend({
     awesomeSortFunc: ['awesomeN'],
     queryImplemented: false,
 	init: Ember.observer('init', function() {
+    	window.scrollTo(0,0);
 		var self = this;
 
 		Ember.run.next(function() {

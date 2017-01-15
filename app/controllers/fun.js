@@ -13,6 +13,7 @@ export default Ember.Controller.extend({
 	    start: 1,
 	},
 	init: Ember.observer('init', function() {
+    	window.scrollTo(0,0);
 		var self = this;
 
 		Ember.run.next(function() {
